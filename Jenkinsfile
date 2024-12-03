@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
     tools {
@@ -8,7 +9,14 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'main' , url: 'https://github.com/Nasreenshaik267/jenkinsfinal.git'
+                 git branch: 'main' , url: 'https://github.com/Nasreenshaik267/jenkinsfinal.git'
+            }
+        }
+        stage('Versioning') {
+            steps {
+                script {
+                sh 'mvn versions:set -DnewVersion=1.0.${BUILD_NUMBER}'
+                }
             }
         }
     }
