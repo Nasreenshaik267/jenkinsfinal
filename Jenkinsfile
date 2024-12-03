@@ -6,7 +6,7 @@ pipeline {
         jdk 'jdk17'
     }
     
-    
+
     stages {
         stage('Git Checkout') {
             steps {
