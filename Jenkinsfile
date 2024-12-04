@@ -38,6 +38,16 @@ pipeline {
                sh 'trivy fs --format table --output trivy-fs-output.txt .'
             }
         } 
+        stage('Build Docker Image and TAG') {
+            steps {
+                script {
+                    // Build the Docker image using the renamed JAR file
+                    script {
+                            sh 'docker build -t nginx:latest .'
+                   }
+                }   
+            }
+        }
         
     }
 }
